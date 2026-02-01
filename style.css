@@ -6,6 +6,14 @@
 
 #buttons {
     padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+#frame {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 #container {

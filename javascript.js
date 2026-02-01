@@ -10,6 +10,13 @@ numTilesBtn.textContent = "Change number of squares";
 buttons.appendChild(numTilesBtn);
 numTilesBtn.addEventListener("click", () => {
   gridSize = parseInt(prompt("Num of tiles per side?"));
+
+  // Set limit for user input to maximum of 100
+  if (gridSize > 100) {
+    console.log("Cannot exceed 100");
+    gridSize = 100;
+  }
+
   container.replaceChildren(); // remove previous grid from container all tiles at once
   changeGridSize(gridSize);
 });
