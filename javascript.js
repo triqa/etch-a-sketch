@@ -1,19 +1,34 @@
 // CREATE THE STARTER UI
 
-// Get the container
+// Get the container & buttons container
+const buttons = document.querySelector("#buttons");
 const container = document.querySelector("#container");
 
-// Create the 16 x 16 grid
-let grid_size = 16;
-for (let i = 0; i < grid_size * grid_size; i++) {
-  const tile = document.createElement("div");
-  tile.classList.add("tile"); // for css styling
-  container.appendChild(tile);
-  tile.style.width = `${500 / 16}px`;
-  tile.style.height = `${500 / 16}px`;
+// Create button that sends user a popup askign for the no. squares per side for the new grid
+const numTilesBtn = document.createElement("button");
+numTilesBtn.textContent = "Change number of squares";
+buttons.appendChild(numTilesBtn);
+numTilesBtn.addEventListener("click", () => {
+  gridSize = parseInt(prompt("Num of tiles per side?"));
+  container.replaceChildren(); // remove previous grid from container all tiles at once
+  changeGridSize(gridSize);
+});
 
-  // Tile changes colour when mouse passes over it, leaving a trail through the grid
-  tile.addEventListener("mouseenter", (e) => {
-    e.target.classList.add("draw");
-  });
+function changeGridSize(gridSize) {
+  // Create the gridSize * gridSize grid
+  for (let i = 0; i < gridSize * gridSize; i++) {
+    const tile = document.createElement("div");
+    tile.classList.add("tile"); // for css styling
+    container.appendChild(tile);
+    tile.style.width = `${500 / gridSize}px`;
+    tile.style.height = `${500 / gridSize}px`;
+
+    // Tile changes colour when mouse passes over it, leaving a trail through the grid
+    tile.addEventListener("mouseenter", (e) => {
+      e.target.classList.add("draw");
+    });
+  }
 }
+
+// Starting side
+changeGridSize(16);

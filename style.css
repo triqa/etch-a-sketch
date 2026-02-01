@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+#buttons {
+    padding: 5px;
+}
+
 #container {
     display: flex;
     flex-wrap: wrap;
